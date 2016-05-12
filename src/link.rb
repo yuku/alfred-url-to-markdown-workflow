@@ -60,8 +60,10 @@ class Extracter
   end
 end
 
+url = ARGV[0] || `pbpaste`
+
 begin
-  extracter = Extracter.new(ARGV[0])
+  extracter = Extracter.new(url)
   if extracter.extracted?
     puts extracter.markdown_title
     `osascript -e 'display notification "#{extracter.title}" with title "link"'`
